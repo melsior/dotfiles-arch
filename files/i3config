@@ -164,4 +164,4 @@ bar {
 }
 
 # if you don’t manually set your wallpaper, it will be anything but the right one.
-exec_always — no-startup-id feh — bg-scale ~/.wallpaper.png
+exec_always — no-startup-id feh --bg-scale ~/.wallpaper.png
