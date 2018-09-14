@@ -1,0 +1,50 @@
+set $mod Mod4
+
+# i3 default font
+font pango:System San Francisco Display 9
+
+# I use those colors at bar and window color settings
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color 	 #E53935
+
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 14"
+  
+# you need to bind some keys like volume and brightness
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+	  # increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- 	# decrease sound volume
+bindsym XF86AudioMute exec amixer -D pulse sset Master -- 0% 		    # mute sound
+
+bindsym XF86MonBrightnessUp exec xbacklight + 10 			              # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight - 10 			            # decrease screen brightness
+
+# I use spotify as music player, so I had to setup play/pause keys too
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent 		      $urgent-bg-color   $urgent-bg-color   $text-color          #00ff00
+
+bar {
+  status_command i3status
+  tray_output primary
+
+	colors {
+		background $bg-color
+	  separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+# if you don’t manually set your wallpaper, it will be anything but the right one.
+exec_always — no-startup-id feh — bg-scale /home/marina/.wallpaper.png

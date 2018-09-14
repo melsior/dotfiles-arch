@@ -13,7 +13,12 @@
       pacman:
         name: rofi, feh, i3status
         state: present
-        update_cache: yes
+        #update_cache: yes
+
+    - name: install System San Francisco Font
+      aur: name=system-san-francisco-font-git use=makepkg skip_installed=true
+      become: yes
+      become_user: melsior
 
     - file:
         dest: ~/.config/i3
