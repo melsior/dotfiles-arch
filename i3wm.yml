@@ -1,0 +1,26 @@
+---
+- hosts: all
+
+  tasks:
+    - name: install i3 tiling windows manager
+      become: yes
+      package:
+        name: i3-wm
+        state: present
+
+    - name: install addons for i3wm
+      become: yes
+      pacman:
+        name: rofi, feh, i3status
+        state: present
+        update_cache: yes
+
+    - file:
+        dest: ~/.config/i3
+        state: directory
+
+    - file:
+        src: "{{ curdir }}/files/i3config"
+        dest: ~/.config/i3/config
+        state: link
+
