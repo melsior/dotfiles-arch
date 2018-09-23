@@ -3,3 +3,6 @@ install_i3wm:
 
 config_aur:
 	ansible-playbook aur.yml -i local -vvv
+
+install_kitty:
+	ansible-playbook kitty.yml -i local -e curdir=$(CURDIR) -vv

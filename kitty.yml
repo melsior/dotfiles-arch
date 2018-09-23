@@ -1,0 +1,20 @@
+---
+- hosts: all
+
+  tasks:
+    - name: install kitty terminal emulator
+      become: yes
+      package:
+        name: kitty
+        state: present
+
+
+    - name: configure kitty terminale emulator
+      file:
+        dest: $HOME/.config/kitty
+        state: directory
+
+      file:
+        src: "{{ curdir }}/files/kitty.conf"
+        dest: ~/.config/kitty/kitty.conf
+        state: link
