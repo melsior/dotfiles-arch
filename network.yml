@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  tasks:
+    - name: install NetworkManager applet for work with i3wm
+      become: yes
+      package:
+        name: network-manager-applet
+        state: present
