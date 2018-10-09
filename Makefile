@@ -6,3 +6,6 @@ config_aur:
 
 install_kitty:
 	ansible-playbook kitty.yml -i local -e curdir=$(CURDIR) -vv
+
+keyboard_conf:
+	ansible-playbook keyboard.yml -i local -vv
