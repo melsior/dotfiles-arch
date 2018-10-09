@@ -4,4 +4,4 @@
   tasks:
     - name: Configure X11 server keyboars
       become: yes
-      command: localectl set-x11-keymap "ru, us" acer_laptop "" grp:alt_shift_toggle,grp:caps_toogle,terminate:ctrl_alt_bksp
+      command: localectl set-x11-keymap "ru, us" acer_laptop "" grp:alt_shift_toggle,grp:caps_toggle,terminate:ctrl_alt_bksp
