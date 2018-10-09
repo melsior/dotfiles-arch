@@ -29,3 +29,13 @@
         dest: ~/.config/i3/config
         state: link
 
+    - name: configuration of Qt5 apps
+      become: yes
+      pacman:
+        name: qt5ct
+        state: present
+
+    - file:
+        src: "{{ curdir }}/files/xprofile"
+        dest: $HOME/.xprofile
+        state: link
