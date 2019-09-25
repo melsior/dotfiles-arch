@@ -9,3 +9,6 @@ install_kitty:
 
 keyboard_conf:
 	ansible-playbook keyboard.yml -i local -vv
+	
+nvim:
+	ansible-playbook nvim.yml -i local -vv
