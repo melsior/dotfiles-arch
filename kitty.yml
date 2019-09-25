@@ -18,3 +18,10 @@
         src: "{{ curdir }}/files/kitty.conf"
         dest: ~/.config/kitty/kitty.conf
         state: link
+    
+    - name: change color scheme to solarized dark patched
+      file:
+        src: "{{ curdir }}/files/kitty-themes/themes/Solarized_Dark_-_Patched.conf"
+        dest: ~/.config/kitty/theme.conf
+        state: link
+
